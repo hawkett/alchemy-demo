@@ -1,0 +1,19 @@
+{
+  "name": "alchemy-cloudflare-monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:saas-website": "bun --cwd apps/saas-website run dev",
+    "build:saas-website": "bun --cwd apps/saas-website run build",
+    "deploy:saas-website": "bun --cwd apps/saas-website ./alchemy.run.ts",
+    "destroy:saas-website": "bun --cwd apps/saas-website ./alchemy.run.ts --destroy",
+    "build:account-infra": "bun --cwd packages/account-infra run build",
+    "typecheck": "bun --cwd apps/saas-website tsc && bun --cwd packages/account-infra tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

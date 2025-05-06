@@ -1,0 +1,56 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+This file defines the basic rules and conventions for working with this codebase.
+
+This codebase is a bun monorepo using typescript. Always use bun in place of npm.
+
+Ask clarifying question(s) before taking action.
+
+## This repository
+
+1. Never delete existing comments in code.
+2. Don't install dependencies in the workspace root - the applications and packages are designed to independent
+3. Never delete code that is unrelated to the current task
+
+When editing files, implement a strict comment preservation process:
+1. Before making any edits, extract and save ALL comments from the original file, including commented-out code blocks and inline comments like '// console.log(...)'.
+2. After completing your edit, compare your list of saved comments with the comments in the edited file.
+3. For each comment in your saved list, verify it exists in the edited file in the appropriate context.
+4. If any comment is missing, restore it to its original location.
+5. If you identify a comments you want to remove, only ever suggest this edit in a separate step
+6. You can add comments to new document new code when making edits whenever that seems like a good idea
+
+## Code Style
+
+1. Use TypeScript for all new code
+2. Use 2 spaces for code indentation
+3. Use functional components for React
+4. Don't separate react component props type into a separate interface - declare them inline
+5. For functions, including react components, declare options prop variables on a single line, and the type definitions on new lines, rather than extracting an interface - like this:
+
+```tsx
+export default function MyComponent({ prop1, prop2 }: {
+  prop1: string;
+  prop2: number
+}) {
+  return <div>
+    <h1>{prop1}</h1>
+    <p>{prop2}</p>
+  </div>
+}
+```
+6. Always import React, and reference react methods explicitly like `React.useState(...)`
+
+When naming databasse tables, don't pluralize them - e..g `project`, not `projects`.
+
+## Naming Conventions
+
+1. Use PascalCase for component names
+2. Use snake_case for database column names
+3. Use camelCase for variables, functions, and drizzle column names used by the application
+4. Use kebab-case for file names
+5. Use SCREAMING_SNAKE_CASE for constants
+
